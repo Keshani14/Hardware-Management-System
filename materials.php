@@ -47,7 +47,7 @@ if (isset($_SESSION['id'])) {
                     echo "<a href=\"my_orders.php\">My Orders</a>";
                 }
             ?>
-            <a class="log_link" href="./#login_form" style="display: <?php echo $hide_log ?>;">Log in</a>
+            <a class="log_link" href="./login-page.php" style="display: <?php echo $hide_log ?>;">Log in</a>
             <a class="log_link" href="profile.php?id=<?php echo $id; ?>" style="display: <?php echo $show_profile ?>;">My Profile</a>
         </nav>
         <hr />

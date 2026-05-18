@@ -53,8 +53,8 @@ if ($user_role != "admin"){
 
             $unit = $_POST['unit'];
             require_once('../connect.php');
-            $sql = "INSERT INTO material_category(category_name, unit, extension)
-                    VALUES ('".$cat_name."', '".$unit."', '".$extension."')";
+            $sql = "INSERT INTO material_category(category_name, quantity_all, unit, extension)
+                    VALUES ('".$cat_name."', 0, '".$unit."', '".$extension."')";
             if (mysqli_query($connection, $sql)){
                 header('Location: ../admin_panel.php?s='. $cat_name .' added to the categories succesfully!');
                 exit;

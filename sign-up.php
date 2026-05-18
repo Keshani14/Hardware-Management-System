@@ -139,7 +139,7 @@ if (isset($_SESSION['id'])) {
         ?>
             </div>
             <div id="no_account">
-                Already have an account? <a href="./index.php#login_form">Log in</a>
+                Already have an account? <a href="./login-page.php">Log in</a>
             </div>
         </form>
 

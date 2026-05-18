@@ -51,7 +51,7 @@ if (isset($_SESSION['id'])) {
                     echo "<a href=\"deliveries.php\">Deliveries</a>"; 
                 }
         ?>
-        <a class="log_link" href="#login_form" style="display: <?php echo $hide_log ?>;">Log in</a>
+        <a class="log_link" href="login-page.php" style="display: <?php echo $hide_log ?>;">Log in</a>
         <a class="log_link" href="profile.php" style="display: <?php echo $show_profile ?>;">My Profile</a>
     </nav>
     <hr />
@@ -66,25 +66,6 @@ if (isset($_SESSION['id'])) {
     <img src="./images/tools.png" alt="An office chair">
     <img src="./images/rocks.png" alt="An office chair">
     </div>
-    <div class="description" style="display: <?php echo $hide_log ?>;">
-        If you are already signed up in the site, use your username and password.
-        Else, you can send a sign up by clicking Sign up.
-    </div>
-    <form id="login_form" class="forms" action="login.php" method="post" style="display: <?php echo $hide_log ?>;">
-        <h2 class="header_2">Log in to the System</h2>
-        <div class="input_div">
-            <label for="username">Username</label>
-            <input type="text" name="username" required />
-        </div>
-        <div  class="input_div">
-            <label for="username">Password</label>
-            <input type="password" name="password" required />
-        </div>
-        <input type="submit" name="submit" value="Log in" class="send_button" />
-        <div id="no_account">
-            No account? <a href="./sign-up.php">Sign up</a>
-        </div>
-    </form>
     <footer>
         <hr />
         <strong>Copyright &copy; 2024 ABC Builders & Suppliers</strong>
