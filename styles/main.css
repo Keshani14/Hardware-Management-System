@@ -1,5 +1,5 @@
 :root {
-    --bg: #f4f7fb;
+    --bg: #eef3f8;
     --surface: #ffffff;
     --surface-soft: #eef4fb;
     --surface-muted: #e7edf5;
@@ -28,12 +28,14 @@ html {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     min-height: 100%;
     margin: 0;
     color: var(--text);
     background:
-        radial-gradient(circle at top left, rgba(31, 95, 139, 0.12), transparent 34rem),
-        linear-gradient(180deg, #f9fbfd 0%, var(--bg) 42%, #edf3f9 100%);
+        linear-gradient(135deg, rgba(31, 95, 139, 0.08), transparent 26rem),
+        linear-gradient(180deg, #f8fafc 0%, var(--bg) 38%, #eaf0f7 100%);
     font-family: "Segoe UI", Arial, Helvetica, sans-serif;
     font-size: 16px;
     line-height: 1.5;
@@ -58,12 +60,14 @@ hr {
 
 #header {
     margin: 0;
-    padding: 28px 24px;
+    padding: 30px clamp(20px, 5vw, 72px);
     color: #fff;
-    background: linear-gradient(135deg, var(--brand-dark), var(--brand));
-    font-size: clamp(28px, 4vw, 44px);
-    font-weight: 700;
-    line-height: 1.12;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 36%),
+        linear-gradient(135deg, #123653, var(--brand));
+    font-size: clamp(30px, 3.4vw, 48px);
+    font-weight: 800;
+    line-height: 1.08;
     letter-spacing: 0;
     text-align: center;
     box-shadow: var(--shadow-sm);
@@ -74,8 +78,8 @@ nav {
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
-    padding: 12px clamp(14px, 3vw, 32px);
-    background: rgba(255, 255, 255, 0.92);
+    padding: 12px clamp(18px, 5vw, 72px);
+    background: rgba(255, 255, 255, 0.96);
     border-bottom: 1px solid var(--line);
     box-shadow: 0 6px 20px rgba(23, 32, 51, 0.05);
     backdrop-filter: blur(10px);
@@ -86,14 +90,14 @@ nav a {
     align-items: center;
     justify-content: center;
     width: auto;
-    min-height: 40px;
-    min-width: 112px;
+    min-height: 42px;
+    min-width: 118px;
     margin: 0;
     padding: 9px 16px;
     color: var(--text);
     background-color: transparent;
     border: 1px solid transparent;
-    border-radius: var(--radius);
+    border-radius: 6px;
     font-size: 15px;
     font-weight: 650;
     text-align: center;
@@ -196,11 +200,19 @@ nav a.active:hover {
 }
 
 .header_2 {
-    margin: 0 0 20px;
+    width: min(1180px, calc(100% - 32px));
+    margin: 34px auto 16px;
     color: var(--brand-dark);
-    font-size: 24px;
-    font-weight: 750;
+    font-size: clamp(22px, 2.2vw, 30px);
+    font-weight: 800;
     line-height: 1.2;
+    text-align: left;
+}
+
+.forms .header_2,
+.graph .header_2 {
+    width: auto;
+    margin: 0 0 20px;
     text-align: center;
 }
 
@@ -323,7 +335,7 @@ nav a.active:hover {
 }
 
 footer {
-    margin-top: 56px;
+    margin-top: auto;
     color: #4f5d70;
     background-color: rgba(255, 255, 255, 0.72);
 }
@@ -334,6 +346,20 @@ footer strong {
     font-size: 14px;
     font-weight: 650;
     text-align: center;
+}
+
+body > section {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto 30px;
+    padding: 24px;
+    background-color: rgba(255, 255, 255, 0.88);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+body > section + .header_2 {
+    margin-top: 36px;
 }
 
 #material_list {
@@ -424,6 +450,10 @@ footer strong {
     text-align: left;
 }
 
+#system_msg:not(:has(#error_msg)):not(:has(#success_msg)) {
+    display: none;
+}
+
 #system_msg strong {
     display: block;
     margin-bottom: 4px;
@@ -445,14 +475,43 @@ footer strong {
 .view_all_link,
 .add_mat_link {
     display: flex;
-    width: min(420px, calc(100% - 32px));
+    width: min(520px, 100%);
     margin: 18px auto 0;
 }
 
+section > .add_mat_link:only-child,
+section > .add_mat_link:first-child:last-of-type {
+    min-height: 86px;
+    color: var(--brand-dark);
+    background:
+        linear-gradient(180deg, rgba(228, 241, 251, 0.72), rgba(255, 255, 255, 0.88));
+    border: 1px dashed #a8c6dd;
+    box-shadow: none;
+}
+
+section > .add_mat_link:only-child::before,
+section > .add_mat_link:first-child:last-of-type::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    background-color: var(--accent);
+    border-radius: 999px;
+    box-shadow: 0 0 0 5px rgba(196, 130, 46, 0.14);
+}
+
+section > .add_mat_link:only-child:hover,
+section > .add_mat_link:first-child:last-of-type:hover {
+    color: var(--brand-dark);
+    background-color: var(--brand-soft);
+    border-color: var(--brand);
+    transform: none;
+}
+
 #view_all_table {
-    width: min(1180px, calc(100% - 32px));
+    width: 100%;
     max-width: 100%;
-    margin: 28px auto 0;
+    margin: 0 auto;
     overflow: hidden;
     background-color: var(--surface);
     border: 1px solid var(--line);
@@ -462,9 +521,14 @@ footer strong {
     box-shadow: var(--shadow-sm);
 }
 
+body > #view_all_table {
+    width: min(1180px, calc(100% - 32px));
+    margin-top: 28px;
+}
+
 #view_all_table th,
 #view_all_table td {
-    padding: 12px 14px;
+    padding: 14px 16px;
     color: var(--text);
     border: 0;
     border-bottom: 1px solid var(--line);
@@ -473,7 +537,7 @@ footer strong {
 
 #view_all_table th {
     color: #fff;
-    background-color: var(--brand-dark);
+    background-color: #173a58;
     font-size: 13px;
     font-weight: 750;
     letter-spacing: 0;
@@ -482,7 +546,7 @@ footer strong {
 }
 
 #view_all_table tr:nth-child(even) {
-    background-color: #f7fafc;
+    background-color: #f8fbfe;
 }
 
 #view_all_table tr:hover td {
@@ -495,6 +559,11 @@ footer strong {
 
 #view_all_table a {
     font-weight: 750;
+}
+
+#view_all_table td:last-child {
+    font-weight: 750;
+    color: var(--brand-dark);
 }
 
 #search_mat {
@@ -667,8 +736,9 @@ footer strong {
 
 @media (max-width: 760px) {
     #header {
-        padding: 22px 16px;
+        padding: 24px 16px;
         font-size: 30px;
+        text-align: left;
     }
 
     nav {
@@ -694,6 +764,15 @@ footer strong {
         padding: 20px;
     }
 
+    body > section {
+        padding: 16px;
+    }
+
+    .header_2 {
+        margin-top: 28px;
+        text-align: left;
+    }
+
     .material_card {
         grid-template-columns: 1fr;
         gap: 14px;
@@ -711,6 +790,12 @@ footer strong {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
+    }
+
+    #system_msg {
+        position: static;
+        width: calc(100% - 24px);
+        margin: 12px auto;
     }
 
     #profile_content div {

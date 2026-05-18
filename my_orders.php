@@ -63,7 +63,7 @@ if (isset($_SESSION['id'])) {
                     echo "<a href=\"admin_panel.php\">Admin</a> <a href=\"handle_orders.php\">Orders</a>";
                 }
                 elseif(isset($role)){
-                    echo "<a href=\"my_orders.php\">My Orders</a>";
+                    echo "<a class='active' href=\"my_orders.php\">My Orders</a>";
                 }
             ?>
             <a class="log_link" href="login-page.php" style="display: <?php echo $hide_log ?>;">Log in</a>
